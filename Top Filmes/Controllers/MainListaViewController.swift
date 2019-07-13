@@ -11,15 +11,24 @@ import UIKit
 class MainListaViewController: UIViewController {
 
     var mListaFilmes: ResponseData? = nil
+    var mIdFilmeSelecionado: Int = 0
+    var mImageSelecionado: UIImage? = nil
     
     @IBOutlet weak var tblFilmes: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         carregarJson()
-
-        // Do any additional setup after loading the view.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueFilmeDetalhes" {
+
+            var destino = segue.destination as! FilmeDetalhesViewController
+            destino.mFilme = mListaFilmes?.results?[mIdFilmeSelecionado]
+//            destino
+        }
+    }
     
     func carregarJson(){
         guard let url = URL(string:"https://api.themoviedb.org/3/movie/upcoming?api_key=ffb23f57606392a1fa4f7377ca07b990") else {return}
@@ -35,39 +44,23 @@ class MainListaViewController: UIViewController {
             //here dataResponse received from a network request
             let decoder = JSONDecoder()
             mListaFilmes = try decoder.decode(ResponseData.self, from: json) //Decode JSON Response Data
-            
-            mListaFilmes?.results?.forEach({ (Filme) in
-                print(Filme.title)
-            })
-            
-            
             // Carregar Dados
                 let nibName = UINib(nibName: "FilmeTableViewCell", bundle: nil)
                 tblFilmes.register(nibName, forCellReuseIdentifier: "idCell")
                 tblFilmes.dataSource = self
+                tblFilmes.delegate = self
             
-            //            print(model.results)
         } catch let parsingError {
             print("Error", parsingError)
         }
+    }
+
+    @IBAction func back(segue: UIStoryboardSegue) {
         
-        //print(json) //Response result
     }
-   
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
-extension MainListaViewController: UITableViewDataSource {
+extension MainListaViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return mListaFilmes?.results?.count ?? 0
     }
@@ -80,6 +73,14 @@ extension MainListaViewController: UITableViewDataSource {
         cell.imgPoster.downloaded(from: "https://image.tmdb.org/t/p/w500"+(mListaFilmes?.results?[indexPath.row].poster_path  ?? "") )
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        mIdFilmeSelecionado = indexPath.row
+
+        performSegue(withIdentifier: "segueFilmeDetalhes", sender: self)
     }
     
 }
@@ -100,6 +101,7 @@ extension UIImageView {
             }
             }.resume()
     }
+    
     func downloaded(from link: String, contentMode mode: UIView.ContentMode = .scaleAspectFit) {  // for swift 4.2 syntax just use ===> mode: UIView.ContentMode
         guard let url = URL(string: link) else { return }
         downloaded(from: url, contentMode: mode)

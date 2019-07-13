@@ -18,6 +18,7 @@
 		14FC4B1322D8BDCF00CA4EF6 /* FilmeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FC4B1122D8BDCF00CA4EF6 /* FilmeTableViewCell.swift */; };
 		14FC4B1422D8BDCF00CA4EF6 /* FilmeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14FC4B1222D8BDCF00CA4EF6 /* FilmeTableViewCell.xib */; };
 		14FC4B1722D8F6F900CA4EF6 /* FilmeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FC4B1622D8F6F900CA4EF6 /* FilmeModel.swift */; };
+		14FC4B1922D991DE00CA4EF6 /* FilmeDetalhesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FC4B1822D991DE00CA4EF6 /* FilmeDetalhesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		14FC4B1122D8BDCF00CA4EF6 /* FilmeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmeTableViewCell.swift; sourceTree = "<group>"; };
 		14FC4B1222D8BDCF00CA4EF6 /* FilmeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilmeTableViewCell.xib; sourceTree = "<group>"; };
 		14FC4B1622D8F6F900CA4EF6 /* FilmeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmeModel.swift; sourceTree = "<group>"; };
+		14FC4B1822D991DE00CA4EF6 /* FilmeDetalhesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmeDetalhesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +73,6 @@
 				14FC4B0D22D8BD7000CA4EF6 /* Controllers */,
 				14FC4B0822D77B7E00CA4EF6 /* Data */,
 				14FC4AF622D7742600CA4EF6 /* AppDelegate.swift */,
-				14FC4AF822D7742600CA4EF6 /* ViewController.swift */,
 				14FC4AFA22D7742600CA4EF6 /* Main.storyboard */,
 				14FC4AFD22D7742900CA4EF6 /* Assets.xcassets */,
 				14FC4AFF22D7742900CA4EF6 /* LaunchScreen.storyboard */,
@@ -92,7 +93,9 @@
 		14FC4B0D22D8BD7000CA4EF6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				14FC4AF822D7742600CA4EF6 /* ViewController.swift */,
 				14FC4B0E22D8BD8800CA4EF6 /* MainListaViewController.swift */,
+				14FC4B1822D991DE00CA4EF6 /* FilmeDetalhesViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 				14FC4B0A22D77BB100CA4EF6 /* Filme.swift in Sources */,
 				14FC4B0C22D8B39A00CA4EF6 /* ResponseData.swift in Sources */,
 				14FC4B0F22D8BD8800CA4EF6 /* MainListaViewController.swift in Sources */,
+				14FC4B1922D991DE00CA4EF6 /* FilmeDetalhesViewController.swift in Sources */,
 				14FC4AF722D7742600CA4EF6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

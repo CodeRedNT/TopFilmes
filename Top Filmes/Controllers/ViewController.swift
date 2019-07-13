@@ -16,5 +16,9 @@ class ViewController: UIViewController {
     
     }
 
+    @IBAction func logar(_ sender: Any) {
+        
+        performSegue(withIdentifier: "segueMain", sender: self)
+    }
 }
 
